@@ -82,7 +82,7 @@ class SmsCodeViewSet(CreateModelMixin, GenericViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
 
-class UserViewSet(CreateModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+class UserViewSet(CreateModelMixin, mixins.UpdateModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     serializer_class = UserRegSerializer
     queryset = User.objects.all()
     # 添加了authentication_classes没有权限访问的时候不会弹出登录框
@@ -107,6 +107,7 @@ class UserViewSet(CreateModelMixin, mixins.RetrieveModelMixin, viewsets.GenericV
         elif self.action == "create":
             return []
         return []
+
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)

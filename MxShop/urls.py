@@ -28,7 +28,7 @@ from MxShop.settings import MEDIA_ROOT
 from goods.view_base import GoodsListView1, GoodsListView2, GoodsListView3, GoodsListView4
 from goods.views import GoodsListViewSet, CategoryViewSet
 from users.views import SmsCodeViewSet, UserViewSet
-from user_operation.views import UserFavViewSet
+from user_operation.views import UserFavViewSet, LeavingMessageViewset, AddressViewset
 
 # goods_list = GoodsListViewSet.as_view({
 #     'get': 'list',
@@ -45,6 +45,10 @@ router.register(r'codes', SmsCodeViewSet, base_name="codes")
 router.register(r'users', UserViewSet, base_name="users")
 
 router.register(r'userfavs', UserFavViewSet, base_name="userfavs") #收藏
+
+router.register(r'messages', LeavingMessageViewset, base_name="messages") #留言
+
+router.register(r'address', AddressViewset, base_name="address") #收货地址
 
 
 urlpatterns = [
